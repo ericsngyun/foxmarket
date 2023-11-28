@@ -1,4 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
@@ -14,8 +15,9 @@ export default function Home() {
         <p className = 'mt-6 text-lg max-w-prose text-muted-foreground'>
           Welcome to Fox Market. Every asset on our platform is verified by our team to ensure our highest quality standards.
         </p>
-        <div className = 'flex flex-col sm:flex-row gap04 mt-6'>
+        <div className = 'flex sm:flex-col gap-2 mt-6'>
           <Link href = '/products' className = {buttonVariants()}>Browse Trending</Link>
+          <Button variant = 'ghost'>Our quality products &rarr;</Button>
         </div>
       </div>
     </MaxWidthWrapper>
