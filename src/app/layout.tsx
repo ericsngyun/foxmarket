@@ -18,14 +18,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ThemeProvider>
-        <body className={cn("relative h-full font-sans antialiased", inter.className)}>
-          <main className = 'relative flex flex-col min-h-screen'>
-            <div className = 'flex-grow flex-l'>
-              {children}
-            </div>
-          </main>
-        </body>
+      <ThemeProvider 
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+          <body className={cn("relative h-full font-sans antialiased", inter.className)}>
+            <main className = 'relative flex flex-col min-h-screen'>
+              <div className = 'flex-grow flex-l'>
+                {children}
+              </div>
+            </main>
+          </body>
       </ThemeProvider>
     </html>
   )
