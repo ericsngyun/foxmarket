@@ -1,6 +1,9 @@
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
-import { Icons } from "./Icons";
+// import { Icons } from "./Icons";
+
+import Image from "next/image";
+import NavItems from "./NavItems";
 
 const NavBar = () => {
   return (
@@ -13,8 +16,13 @@ const NavBar = () => {
 
               <div className = 'ml-4 flex lg:ml-0 '>
                 <Link href = '/'>
-                  <Icons.logo className = 'h-10 w-10' />
+                  {/* <Icons.logo className = 'h-10 w-10' /> */}
+                  <Image src = '/fox_head_01.png' alt = 'FoxMarket Logo' height = {100} width = {100}/>
                 </Link>
+              </div>
+
+              <div className = 'hidden z-50 lg:ml-8 lg:block lg:self-stretch '>
+                <NavItems />
               </div>
             </div>
           </div>
