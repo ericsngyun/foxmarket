@@ -32,12 +32,12 @@ const NavItems = () => {
 
         // Render the category item
         return <NavItem 
-            category = {category} 
-            handleOpen = {handleOpen} 
-            isOpen = {isOpen} 
-            key = {category.value} 
-            isAnyOpen = {isAnyOpen}
-          />;
+                  category = {category} 
+                  handleOpen = {handleOpen} 
+                  isOpen = {isOpen} 
+                  key = {category.value} 
+                  isAnyOpen = {isAnyOpen}
+                />;
       })}
     </div>
   );
