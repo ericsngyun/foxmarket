@@ -1,7 +1,7 @@
 // Import necessary dependencies and types
 import { PRODUCT_CATEGORIES } from "@/config";
 import { Button } from "./ui/button";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronsRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
@@ -70,15 +70,22 @@ const NavItem = ({isAnyOpen, category, handleOpen, isOpen}: NavItemProps) => {
                           src={item.imageSrc}
                           alt="product category image"
                           fill
-                          className = "object-cover object-center"
+                          className="object-cover object-center"
                         />
                       </div>
 
                       {/* Link to the item */}
-                      <Link href = {item.href} className = "mt-6 block font-medium text-gray-900">
+                      <Link
+                        href={item.href}
+                        className="mt-6 block font-medium text-gray-900 hover:underline"
+                      >
                         {item.name}
                       </Link>
-
+                      <p 
+                        className="mt-1" 
+                        aria-hidden="true">
+                          Shop Now
+                      </p>
                     </div>
                   ))}
                 </div>
