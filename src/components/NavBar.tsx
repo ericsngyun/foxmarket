@@ -5,6 +5,7 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import Image from "next/image";
 import NavItems from "./NavItems";
 import { buttonVariants } from "./ui/button";
+import Cart from "./Cart";
 
 const NavBar = () => {
 
@@ -61,6 +62,23 @@ const NavBar = () => {
                       Create Account
                     </Link>
                   )}
+                  {/* this is the line separating Sign In and Create Account button and after the Create button as well */}
+                  {user ? (
+                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                  ) : null}
+
+                  {user ? null : 
+                    <div className="flex lg:ml-6">
+                      <span 
+                        className = 'h-6 w-px bg-gray-200'
+                        aria-hidden = 'true'
+                      />
+                     </div>
+                  }
+
+                  <div className = 'ml-4 flow-root lg:ml-6'>
+                    <Cart />
+                  </div>
                 </div>
               </div>
             </div>
