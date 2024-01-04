@@ -79,11 +79,24 @@ const Cart = () => {
                         className = 'relative mb-4 h-60 w-80 text-muted-foreground'
                         >
                         {/* PLACEHOLDER IMAGE FOR NOW */}
-                            <Image src = '/fox-empty.png' fill alt = 'empty shopping cart fox'/>
+                            <Image 
+                                src = '/fox-empty.png' 
+                                fill 
+                                alt = 'empty shopping cart fox'
+                            />
+                        </div>
                         {/* <span className = 'relative'>uh oh looks like you're cart is empty!</span> */}
                         <div className = 'text-xl font-semibold'>Your cart is empty</div>
+                        <SheetTrigger asChild>
+                            <Link href = '/products' className = {buttonVariants({
+                                variant: "link",
+                                size: "sm",
+                                className: "text-sm text-muted-foreground",
+                            })}>
+                                Add items to your cart to checkout
+                            </Link>
+                        </SheetTrigger>
                     </div>
-                </div>
             )}
 
         </SheetContent>
