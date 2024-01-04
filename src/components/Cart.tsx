@@ -74,8 +74,14 @@ const Cart = () => {
                 </>
             ) : (
                 <div className = "flex h-full flex-col items-center justify-center space-y-1">
-                    <div className = 'relative mb-4 h-60 w-60 text-muted-foreground'>
-                        <Image src = '/fox-empty.png' fill alt = 'empty shopping cart fox'/>
+                    <div 
+                        aria-hidden = 'true'
+                        className = 'relative mb-4 h-60 w-80 text-muted-foreground'
+                        >
+                        {/* PLACEHOLDER IMAGE FOR NOW */}
+                            <Image src = '/fox-empty.png' fill alt = 'empty shopping cart fox'/>
+                        {/* <span className = 'relative'>uh oh looks like you're cart is empty!</span> */}
+                        <div className = 'text-xl font-semibold'>Your cart is empty</div>
                     </div>
                 </div>
             )}
