@@ -1,15 +1,19 @@
 "use client"
 
 import { ShoppingCart } from 'lucide-react'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
 import { Separator } from './ui/separator';
 import { formatPrice } from '@/lib/utils';
+import { buttonVariants } from './ui/button';
+import Link from 'next/link';
+import Image from 'next/image';
 
 
 const Cart = () => {
 
-    const itemCount = 1;
-
+    const itemCount = 0;
+    const fee = 1;
+    const total = 500;
 
     return <Sheet>
         <SheetTrigger className = 'group -m-2 flex items-center p-2'>
@@ -36,18 +40,44 @@ const Cart = () => {
                         <Separator />
                         <div className = 'space-y-1.5 text-sm'>
                             <div className = 'flex'>
-                                <span className = 'flex-1'>Shipping</span>
+                                <span className = 'flex-1'>
+                                    Shipping
+                                </span>
                                 <span>Free</span>
                             </div>
                             <div className = 'flex'>
-                                <span className = 'flex-1'>Transaction Fee</span>
-                                <span>{formatPrice(1)}</span>
+                                <span className = 'flex-1'>
+                                    Transaction Fee
+                                </span>
+                                <span>{formatPrice(fee)}</span>
+                            </div>
+                            <div className = 'flex'>
+                                <span className = 'flex-1'>
+                                    Total
+                                </span>
+                                <span>{formatPrice(total)}</span>
                             </div>
                         </div>
+
+                        <SheetFooter>
+                            <SheetTrigger asChild>
+                                <Link 
+                                    href = '/cart' 
+                                    className = {buttonVariants({
+                                        className: "w-full",
+                                    })}>
+                                        Continue to Checkout
+                                </Link>
+                            </SheetTrigger>
+                        </SheetFooter>
                     </div>
                 </>
             ) : (
-                <div></div>
+                <div className = "flex h-full flex-col items-center justify-center space-y-1">
+                    <div className = 'relative mb-4 h-60 w-60 text-muted-foreground'>
+                        <Image src = '/fox-empty.png' fill alt = 'empty shopping cart fox'/>
+                    </div>
+                </div>
             )}
 
         </SheetContent>
