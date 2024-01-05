@@ -3,35 +3,61 @@ import path from "path"
 import type {InitOptions} from "payload/config"
 import payload from "payload"
 
+// Configuring dotenv to load environment variables from .env file
 dotenv.config({
     path: path.resolve(__dirname, "../.env")
-})
+});
 
-let cached = (global as any).payload
+// Creating a global variable to cache the payload
+let cached = (global as any).payload;
 
-if(!cached) {
+// Checking if the payload is already cached
+if (!cached) {
+    // If not cached, initialize the payload object
     cached = (global as any).payload = {
-        client: null, 
+        client: null,
         promise: null,
-    }
+    };
 }
 
+// Defining the interface for the function arguments
 interface Args {
-    initOptions?: Partial<InitOptions>
+    initOptions?: Partial<InitOptions>;
 }
 
-export const getPayloadClient = async({
+// Exporting the function that retrieves the payload client
+export const getPayloadClient = async ({
     initOptions,
 }: Args) => {
-    if(!process.env.PAYLOAD_SECRET) {
-        throw new Error('PAYLOAD_SECRET is missing')
+    // Checking if PAYLOAD_SECRET environment variable is missing
+    if (!process.env.PAYLOAD_SECRET) {
+        throw new Error('PAYLOAD_SECRET is missing');
     }
 
-    if(cached.client) {
-        return cached.client
+    // Checking if the payload client is already cached
+    if (cached.client) {
+        return cached.client;
     }
 
-    if(!cached.promise) {
-        cached.promise = payload.init()
+    // Checking if the promise to initialize the payload is already cached
+    if (!cached.promise) {
+        // Initializing the payload with the provided secret and initOptions
+        cached.promise = payload.init({
+            secret: process.env.PAYLOAD_SECRET,
+            local: initOptions?.express ? false : true,
+            ...(initOptions || {}),
+        });
     }
-}
+
+    try {
+        // Waiting for the payload promise to resolve and assigning the client
+        cached.client = await cached.promise;
+    } catch (e: unknown) {
+        // Resetting the promise and rethrowing the error
+        cached.promise = null;
+        throw e;
+    }
+
+    // Returning the cached payload client
+    return cached.client;
+};
