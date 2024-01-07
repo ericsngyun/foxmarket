@@ -15,7 +15,7 @@ export default buildConfig({
         meta: {
             titleSuffix: "- FoxMarket",
             favicon: "/favicon.ico",
-            ogImage: "" // Add a valid value for ogImage
+            ogImage: "/fox-thumb.png" // Add a valid value for ogImage
         }
         
     },
@@ -24,7 +24,7 @@ export default buildConfig({
     },
     editor: slateEditor({}),
     db: mongooseAdapter({
-        url: process.env.MONGODB_URL!
+        url: process.env.MONGODB_URL!,
     }),
     typescript: {
         outputFile: path.resolve(__dirname, 'payload-types.ts')
