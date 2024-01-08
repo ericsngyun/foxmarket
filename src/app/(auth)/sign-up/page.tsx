@@ -1,9 +1,39 @@
-import { buttonVariants } from "@/components/ui/button";
+"use client"
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image"
 import Link from "next/link";
+import {useForm} from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+
+import { z } from "zod"
+import {
+  AuthCredentialsValidator,
+  TAuthCredentialsValidator,
+} from "@/lib/validators/account-credentials-validator";
+
 
 function Page() {
+
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TAuthCredentialsValidator>({
+    resolver: zodResolver(
+      AuthCredentialsValidator
+    ),
+  });
+
+  const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
+    // send data to the server
+  };
+
   return (
     <>
       <div className="container relative flex pt-20 flex-col items-center">
@@ -12,28 +42,50 @@ function Page() {
             <Image
               src="/fox_head_01.png"
               alt="fox-icon"
-              height={100}
-              width={100}
+              height={120}
+              width={120}
             ></Image>
-            <h1 className = 'text-2xl font-bold'>
-                Create an account
-            </h1>
+            <h1 className="text-2xl font-bold">Create an account</h1>
 
-            <Link className = {buttonVariants({
-                variant: 'link',
-            })} href = '/sign-in'>
-                Already have an account? Sign-in
-                <ArrowRight className = 'h-4 w-4' />
+            <Link
+              className={buttonVariants({
+                variant: "link",
+              })}
+              href="/sign-in"
+            >
+              Already have an account? Sign-in
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className = 'grid gap-6'>
-            <form onSubmit={}>
-                <div className = 'grid gap-2'>
-                    <div className="grid gap-1 py-2">
-                        
-                    </div>
+          <div className="grid gap-6">
+            <form onSubmit={handleSubmit()}>
+              <div className="grid gap-2">
+                <div className="grid gap-1 py-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                  {...register("email")}
+                    className={cn({
+                      "focus-visible:ring-red-500": 
+                      errors.email,
+                    })}
+                    placeholder="you@example.com"
+                  />
                 </div>
+                <div className="grid gap-1 py-2">
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                  {...register("password")}
+                    className={cn({
+                      "focus-visible:ring-red-500": 
+                      errors.password,
+                    })}
+                    placeholder="Password"
+                  />
+                </div>
+
+                <Button>Sign up</Button>
+              </div>
             </form>
           </div>
         </div>
