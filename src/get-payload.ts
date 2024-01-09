@@ -1,7 +1,7 @@
 import dotenv from "dotenv"
 import path from "path"
 import type {InitOptions} from "payload/config"
-import payload from "payload"
+import payload, { Payload } from "payload"
 
 // Configuring dotenv to load environment variables from .env file
 dotenv.config({
@@ -28,7 +28,7 @@ interface Args {
 // Exporting the function that retrieves the payload client
 export const getPayloadClient = async ({
     initOptions,
-}: Args) => {
+}: Args = {}): Promise<Payload> => {
     // Checking if PAYLOAD_SECRET environment variable is missing
     if (!process.env.PAYLOAD_SECRET) {
         throw new Error('PAYLOAD_SECRET is missing');
