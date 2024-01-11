@@ -2,11 +2,22 @@ import dotenv from "dotenv"
 import path from "path"
 import type {InitOptions} from "payload/config"
 import payload, { Payload } from "payload"
+import nodemailer from "nodemailer"
+
 
 // Configuring dotenv to load environment variables from .env file
 dotenv.config({
     path: path.resolve(__dirname, "../.env")
 });
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.resend.com",
+    port: 465,
+    auth: {
+        user: "resend",
+        pass: process.env.RESEND_API_KEY,
+    }
+})
 
 // Creating a global variable to cache the payload
 let cached = (global as any).payload;
@@ -43,6 +54,11 @@ export const getPayloadClient = async ({
     if (!cached.promise) {
         // Initializing the payload with the provided secret and initOptions
         cached.promise = payload.init({
+            email: {
+                transport: transporter,
+                fromAddress: "onboarding@resend.dev",
+                fromName: "FoxMarket",
+            },
             secret: process.env.PAYLOAD_SECRET,
             local: initOptions?.express ? false : true,
             ...(initOptions || {}),
