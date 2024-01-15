@@ -24,12 +24,12 @@ const NavBar = () => {
               <div className="ml-4 flex lg:ml-0 ">
                 <Link href="/">
                   {/* <Icons.logo className = 'h-10 w-10' /> */}
-                  {/* <Image
+                  <Image
                     src="/fox_head_01.png"
                     alt="FoxMarket Logo"
                     height={100}
                     width={100}
-                  /> */}
+                  />
                 </Link>
               </div>
 

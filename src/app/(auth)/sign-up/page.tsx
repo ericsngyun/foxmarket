@@ -32,7 +32,9 @@ function Page() {
 
   const { mutate, isLoading } = 
     trpc.auth.createPayloadUser.useMutation({
-      
+        onError: (err) => {
+          
+        }
     });
 
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
