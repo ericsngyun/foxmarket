@@ -2,6 +2,7 @@
 
 import { trpc } from "@/trpc/client"
 import { XCircle } from "lucide-react";
+import Image from "next/image";
 
 interface VerifyEmailProps {
     token: string,
@@ -21,6 +22,19 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
             Please try again.
         </p>
     </div>
+  }
+
+  if(true) {
+    return(
+      <div className = 'flex h-full flex-col items-center justify-center'>
+        <div className = 'relative mb-4 h-60 w-80 text-muted-foreground'>
+          <Image src='/fox-thumb.png' fill alt='fox sent'/>
+        </div>
+        <h3 className = 'font-semibold text-2xl'>
+          You&apos;re all set!
+        </h3>
+      </div>
+    )
   }
 };
 
