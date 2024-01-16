@@ -7,6 +7,7 @@ import { formatPrice } from '@/lib/utils';
 import { buttonVariants } from './ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 
 const Cart = () => {
@@ -14,6 +15,12 @@ const Cart = () => {
     const itemCount = 0;
     const fee = 1;
     const total = 500;
+
+    const [isMounted, setIsMounted] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     return <Sheet>
         <SheetTrigger className = 'group -m-2 flex items-center p-2'>
@@ -30,7 +37,8 @@ const Cart = () => {
                 <SheetTitle>Cart (0)</SheetTitle>
             </SheetHeader>
 
-            {itemCount > 0 ? (
+
+            {isMounted && (itemCount > 0) ? (
                 <>
                     <div className = 'flex w-full flex-col pr-6'>
                         {/* TODO: CART LOGIC */}
