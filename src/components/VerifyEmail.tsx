@@ -11,11 +11,12 @@ interface VerifyEmailProps {
 }
 
 const VerifyEmail = ({ token }: VerifyEmailProps) => {
-  const { data, isLoading, isError } = trpc.auth.verifyEmail.useQuery({
+  const { data, isLoading, isError,error } = trpc.auth.verifyEmail.useQuery({
     token,
   })
-   console.log(data);
+  //  console.log(data);
   if(isError) {
+    console.log(error)
     return (
       <div className = 'flex flex-col items-center gap-2'>
         <XCircle className = 'h-8 w-8 text-red-600' />
@@ -28,7 +29,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     )
   }
 
-  if(true) {
+  if(data?.success) {
     return (
       <div className="flex h-full flex-col items-center justify-center">
         {/* <div className="relative mb-4 h-60 w-80 text-muted-foreground">
