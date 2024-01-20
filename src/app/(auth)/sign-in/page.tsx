@@ -4,7 +4,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import Image from "next/image"
 import Link from "next/link";
 import {useForm} from "react-hook-form"
@@ -78,7 +78,7 @@ function Page() {
               height={120}
               width={120}
             />
-            <h1 className="text-2xl font-bold">Create an account</h1>
+            <h1 className="text-2xl font-bold">Sign in</h1>
 
             <Link
               className={buttonVariants({
@@ -86,7 +86,7 @@ function Page() {
               })}
               href="/sign-in"
             >
-              Already have an account? Sign-in
+              Don&apos;t have an account? Sign-up
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -130,7 +130,12 @@ function Page() {
                   
                 </div>
 
-                <Button>Sign up</Button>
+                <Button>
+                    Sign In
+                    {isLoading && (
+                        <Loader2 className = 'animate-spin text-muted-foreground' />
+                    )}
+                </Button>
               </div>
             </form>
           </div>
