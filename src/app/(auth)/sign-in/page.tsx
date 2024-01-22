@@ -26,6 +26,14 @@ function Page() {
   const origin = searchParams.get('origin')
 
 
+  const continueAsSeller = () => {
+    router.push("?as=seller")
+  }
+
+  const continueAsBuyer = () => {
+    router.push('/sign-in', undefined)
+  }
+
   const {
     register,
     handleSubmit,
@@ -37,32 +45,37 @@ function Page() {
   console.log("input errors:" + errors);
 
 
-  const { mutate, isLoading } = trpc.auth.signIn.useMutation({
-    onError: (err) => {
-      if (err.data?.code === "CONFLICT") {
-        toast.error("This email is already in use");
+  const { mutate: signIn, isLoading } = 
+    trpc.auth.signIn.useMutation({
+      onSuccess: () => {
+        toast.success("Signed in successfully")
 
-        return;
+        router.refresh()
+
+        // if coming from another router e.g. the cart and came to sign-in, send user back to origin route
+        if(origin) {
+          router.push(`/${origin}`)
+          return
+        }
+
+        if(isSeller) {
+          router.push('/sell')
+          return
+        }
+
+        router.push('/')
+
+      },
+      onError: (err) => {
+        if(err.data?.code === "UNAUTHORIZED") {
+          toast.error("invalid email or password.")
+        }
       }
-
-      if (err instanceof ZodError) {
-        toast.error(err.issues[0].message);
-
-        return;
-      }
-
-      toast.error("Something went wrong. Please try again");
-    },
-
-    onSuccess: ({ sentToEmail }) => {
-      toast.success(`Verification email sent to ${sentToEmail}.`);
-      router.push("/verify-email?to=" + sentToEmail);
-    },
   });
 
   const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
     // send data to the server
-    mutate({ email, password });
+    signIn({ email, password });
     // console.log(errors);
   };
 
@@ -77,7 +90,11 @@ function Page() {
               height={120}
               width={120}
             />
-            <h1 className="text-2xl font-bold">Sign in to your account</h1>
+            {isSeller ? (
+              <h1 className="text-2xl font-bold">Sign in as a merchant</h1>
+            ) : (
+              <h1 className="text-2xl font-bold">Sign in as a buyer</h1>
+            )}
 
             <Link
               className={buttonVariants({
@@ -149,6 +166,24 @@ function Page() {
                 </span>
               </div>
             </div>
+
+            {isSeller ? (
+              <Button
+                onClick={continueAsBuyer}
+                variant="secondary"
+                disabled={isLoading}
+              >
+                Continue as customer
+              </Button>
+            ) : (
+              <Button
+                onClick={continueAsSeller}
+                variant="secondary"
+                disabled={isLoading}
+              >
+                Continue as merchant
+              </Button>
+            )}
           </div>
         </div>
       </div>
