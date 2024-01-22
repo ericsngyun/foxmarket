@@ -1,4 +1,3 @@
-'use client'
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 // import { Icons } from "./Icons";
@@ -8,9 +7,13 @@ import NavItems from "./NavItems";
 import { buttonVariants } from "./ui/button";
 import Cart from "./Cart";
 import { useEffect, useState } from "react";
+import { getServerSideUser } from "@/lib/payload-utils";
+import { cookies } from "next/headers";
 
-const NavBar = () => {
-  const user = null;
+const NavBar = async () => {
+  const nextCookies = cookies()
+  
+  const { user } = await getServerSideUser(nextCookies)
 
 
   return (
