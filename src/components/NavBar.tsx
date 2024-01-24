@@ -9,11 +9,13 @@ import Cart from "./Cart";
 import { useEffect, useState } from "react";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { cookies } from "next/headers";
+import UserAccountNav from "./UserAccountNav";
 
 const NavBar = async () => {
   const nextCookies = cookies()
   
   const { user } = await getServerSideUser(nextCookies)
+  console.log(user);
 
 
   return (
@@ -58,7 +60,7 @@ const NavBar = async () => {
                   )}
 
                   {user ? (
-                    <p></p>
+                    <UserAccountNav />
                   ) : (
                     <Link
                       href="/sign-up"
