@@ -5,10 +5,14 @@ import { Button } from "./ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { User } from "@/payload-types";
 import Link from "next/link";
+import { useAuth } from "@/hooks/use-auth";
 
 
 
 const UserAccountNav = ({ user }: {user: User}) => {
+
+  const { signOut } = useAuth();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="overflow-visible">
@@ -24,14 +28,14 @@ const UserAccountNav = ({ user }: {user: User}) => {
           </div>
         </div>
 
-        <DropdownMenuSeparator /> 
+        <DropdownMenuSeparator />
 
-        <DropdownMenuItem asChild >
-            <Link href = '/sell'>Seller Dashboard</Link>
+        <DropdownMenuItem asChild>
+          <Link href="/sell">Seller Dashboard</Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className = 'text-red-500'>
-            Log out
+        <DropdownMenuItem onClick={signOut} className="text-red-500">
+          Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

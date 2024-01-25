@@ -28,10 +28,12 @@ function Page() {
 
   const continueAsSeller = () => {
     router.push("?as=seller")
+    // router.refresh()
   }
 
   const continueAsBuyer = () => {
     router.push('/sign-in', undefined)
+    // router.refresh()
   }
 
   const {
@@ -50,21 +52,22 @@ function Page() {
       onSuccess: () => {
         toast.success("Signed in successfully")
 
-        router.refresh()
 
         // if coming from another router e.g. the cart and came to sign-in, send user back to origin route
         if(origin) {
           router.push(`/${origin}`)
+          router.refresh()
           return
         }
 
         if(isSeller) {
           router.push('/sell')
+          router.refresh()
           return
         }
 
         router.push('/')
-
+        router.refresh()
       },
       onError: (err) => {
         if(err.data?.code === "UNAUTHORIZED") {
