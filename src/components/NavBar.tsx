@@ -29,12 +29,12 @@ const NavBar = async () => {
               <div className="ml-4 flex lg:ml-0 ">
                 <Link href="/">
                   {/* <Icons.logo className = 'h-10 w-10' /> */}
-                  {/* <Image
+                  <Image
                     src="/fox_head_01.png"
                     alt="FoxMarket Logo"
                     height={100}
                     width={100}
-                  /> */}
+                  />
                 </Link>
               </div>
 
@@ -60,7 +60,7 @@ const NavBar = async () => {
                   )}
 
                   {user ? (
-                    <UserAccountNav />
+                    <UserAccountNav user={user} />
                   ) : (
                     <Link
                       href="/sign-up"
@@ -74,16 +74,16 @@ const NavBar = async () => {
                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   ) : null}
 
-                  {user ? null : 
+                  {user ? null : (
                     <div className="flex lg:ml-6">
-                      <span 
-                        className = 'h-6 w-px bg-gray-200'
-                        aria-hidden = 'true'
+                      <span
+                        className="h-6 w-px bg-gray-200"
+                        aria-hidden="true"
                       />
-                     </div>
-                  }
+                    </div>
+                  )}
 
-                  <div className = 'ml-4 flow-root lg:ml-6'>
+                  <div className="ml-4 flow-root lg:ml-6">
                     <Cart />
                   </div>
                 </div>

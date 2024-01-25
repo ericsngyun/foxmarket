@@ -70,7 +70,7 @@ const NavItem = ({isAnyOpen, category, handleOpen, isOpen}: NavItemProps) => {
                           src={item.imageSrc}
                           alt="product category image"
                           fill
-                          className="object-cover object-center"
+                          className="object-cover object-center hover:cursor-pointer"
                         />
                       </div>
 

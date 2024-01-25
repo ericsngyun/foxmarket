@@ -51,6 +51,7 @@ const NavItems = () => {
 
         // Render the category item
         return <NavItem 
+                  
                   category = {category} 
                   handleOpen = {handleOpen} 
                   isOpen = {isOpen} 
