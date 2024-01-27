@@ -1,4 +1,4 @@
-import { PRODUCT_CATEGORIES } from "@/config";
+import { PRODUCT_CATEGORIES } from "../../config";
 import { CollectionConfig } from "payload/types";
 
 export const Products: CollectionConfig = {
@@ -42,32 +42,33 @@ export const Products: CollectionConfig = {
       label: "Category",
       type: "select",
       options: PRODUCT_CATEGORIES.map(({ label, value }) => ({
-        label, value
+        label,
+        value,
       })),
       required: true,
     },
-    {
-      name: "product_files",
-      label: "Product file(s)",
-      type: "relationship",
-      required: true,
-      relationTo: "product_files",
-      hasMany: false,
-    },
+    // {
+    //   name: "product_files",
+    //   label: "Product file(s)",
+    //   type: "relationship",
+    //   required: true,
+    //   relationTo: "product_files",
+    //   hasMany: false,
+    // },
     {
       name: "approvedForSale",
       label: "Product Status",
       type: "select",
       defaultValue: "pending",
       access: {
-        create: ({req}) => req.user.role === "admin",
-        read: ({req}) => req.user.role === "admin",
-        update: ({req}) => req.user.role === "admin"
+        create: ({ req }) => req.user.role === "admin",
+        read: ({ req }) => req.user.role === "admin",
+        update: ({ req }) => req.user.role === "admin",
       },
       options: [
         {
           label: "Pending verification",
-          value: "pending"
+          value: "pending",
         },
         {
           label: "Approved",
@@ -76,13 +77,12 @@ export const Products: CollectionConfig = {
         {
           label: "Denied",
           value: "denied",
-
-        }
+        },
       ],
     },
     {
       name: "priceId",
-      access:{
+      access: {
         create: () => false,
         read: () => false,
         update: () => false,
@@ -94,7 +94,7 @@ export const Products: CollectionConfig = {
     },
     {
       name: "stripeId",
-      access:{
+      access: {
         create: () => false,
         read: () => false,
         update: () => false,
@@ -121,8 +121,8 @@ export const Products: CollectionConfig = {
           type: "upload",
           relationTo: "media",
           required: true,
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
 };
