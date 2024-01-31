@@ -47,7 +47,7 @@ export default function Home() {
 
           </div>
         </div>
-        <ProductReel/>
+        <ProductReel title = 'Brand New' href = '/products'/>
         {/* TODO: List Products! */}
       </MaxWidthWrapper>
 
