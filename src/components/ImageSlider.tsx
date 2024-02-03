@@ -45,7 +45,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
           className={cn(activeStyles, "right-3 transition", 
           {
             [inactiveStyles]: slideConfig.isEnd,
-            "hover:bg-primary-300 text-primary-800 opacity-100":
+            "hover:bg-primary-300 text-primary-800 opacity-50 hover:opacity-90":
               !slideConfig.isEnd,
           })}
           aria-label = 'next-image'
@@ -60,16 +60,21 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
           className={cn(activeStyles, "left-3 transition", 
           {
             [inactiveStyles]: slideConfig.isBeginning,
-            "hover:bg-primary-300 text-primary-800 opacity-100":
+            "hover:bg-primary-300 text-primary-800 opacity-50 hover:opacity-90":
               !slideConfig.isBeginning,
           })}
-          aria-label = 'next-image'
+          aria-label = 'previous-image'
         >
           <ChevronLeft className = 'h-4 w-4 text-zinc-700' />
         </button>
       </div>
 
       <Swiper
+        pagination={{
+          renderBullet: (_, className) => {
+            return `<span class="rounded-full transition ${className}"></span>`;
+          }
+        }}
         spaceBetween={50}
         modules={[Pagination]}
         slidesPerView={1}
@@ -77,7 +82,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
         className="h-full w-full"
       >
         {urls.map((url, i) => (
-          <SwiperSlide key={i} className="-z-10 relative h-full w-full">
+          <SwiperSlide key={i} className="-z-10 relative h-full w-full bg-white">
             <Image
               fill
               loading="eager"
