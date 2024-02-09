@@ -8,13 +8,16 @@ import { buttonVariants } from './ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useCart } from '@/hooks/use-cart';
 
 
 const Cart = () => {
 
-    const itemCount = 0;
+    const { items } = useCart();
+
+    const itemCount = items.length
     const fee = 1;
-    const total = 500;
+    const cartTotal = items.reduce((total, {product}) => total + product.price, 0)
 
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -41,7 +44,10 @@ const Cart = () => {
             {isMounted && (itemCount > 0) ? (
                 <>
                     <div className = 'flex w-full flex-col pr-6'>
-                        {/* TODO: CART LOGIC */}
+                        {items.map(({product}) => (
+                            <CartItem key = {product.id} />
+                        ))}
+
                         cart items
                     </div>
                     <div className = 'space-y-4 pr-6'>
@@ -63,7 +69,7 @@ const Cart = () => {
                                 <span className = 'flex-1'>
                                     Total
                                 </span>
-                                <span>{formatPrice(total)}</span>
+                                <span>{formatPrice(cartTotal + fee)}</span>
                             </div>
                         </div>
 
