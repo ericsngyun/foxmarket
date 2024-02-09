@@ -121,7 +121,7 @@ const Page = async ({ params }: PageProps) => {
             
           </div>
 
-          <div className="mt-10 lg:col-start-2 lg:row-start-1 lg:self-center lg:mt-0">
+          <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:self-center lg:mt-0">
             <div className="aspect-square rounded-lg ">
               <ImageSlider urls={validUrls} />
             </div>
@@ -129,7 +129,7 @@ const Page = async ({ params }: PageProps) => {
         
         {/* add to cart part */}
 
-        <div className="mt-0 lg:col-start-2 lg:row-start-2 lg:max-w-lg lg:self-start">
+        <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
             <div>
               <div className="mt-10">
                 <AddToCartButton product = {product}/>
