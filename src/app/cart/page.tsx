@@ -176,12 +176,16 @@ const Page = () => {
                   </div>
                   <div className="text-base font-medium text-gray-900">
                     {isMounted ? (
-                        formatPrice(cartTotal * 1.15)
-                      ) : (
-                        <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
-                      )}
+                      formatPrice(cartTotal * 1.15)
+                    ) : (
+                      <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                    )}
                   </div>
                 </div>
+              </div>
+
+              <div className = 'mt-6'>
+                <Button className = 'w-full' size = 'lg'>Checkout</Button>
               </div>
             </section>
           </div>
