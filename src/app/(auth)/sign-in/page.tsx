@@ -55,6 +55,7 @@ function Page() {
 
         // if coming from another router e.g. the cart and came to sign-in, send user back to origin route
         if(origin) {
+          console.log('success')
           router.push(`/${origin}`)
           router.refresh()
           return
