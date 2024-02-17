@@ -1,5 +1,8 @@
 'use client'
 
+import { trpc } from "@/trpc/client"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 import { string } from "zod"
 
 interface PaymentStatusProps {
@@ -9,6 +12,20 @@ interface PaymentStatusProps {
 }
 
 const PaymentStatus = ({orderEmail, orderId, isPaid}: PaymentStatusProps) => {
+
+  const router = useRouter()
+
+  const {data} = trpc.payment.pollOrderStatus.useQuery(
+    { orderId },
+    {
+      enabled: isPaid === false,
+      refetchInterval: (data) => (data?.isPaid ? false : 1000)
+    }
+  )
+  useEffect(() => {
+    if(data?.isPaid) router.refresh()
+  }, [data?.isPaid, router])
+
   return (
     <div className="mt-16 grid grid-cols-2 gap-x-4 text-gray-600">
       <div>
