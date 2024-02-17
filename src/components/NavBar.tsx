@@ -15,7 +15,6 @@ const NavBar = async () => {
   const nextCookies = cookies()
   
   const { user } = await getServerSideUser(nextCookies)
-  console.log(user);
 
 
   return (

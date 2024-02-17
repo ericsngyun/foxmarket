@@ -93,7 +93,7 @@ const Page = () => {
                   items.map(({ product }) => {
                     const label = PRODUCT_CATEGORIES.find(
                       (c) => c.value === product.category
-                    )?.label;
+                    )?.label
 
                     const { image } = product.images[0];
 
