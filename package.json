@@ -25,6 +25,7 @@
     "@trpc/next": "10.40",
     "@trpc/react-query": "10.43.1",
     "@trpc/server": "^10.45.0",
+    "body-parser": "^1.20.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cross-env": "^7.0.3",
