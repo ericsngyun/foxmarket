@@ -53,6 +53,8 @@ const start = async () => {
 
             process.exit()
         })
+
+        return
     }
 
 

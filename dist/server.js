@@ -120,6 +120,7 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                             }
                         });
                     }); });
+                    return [2 /*return*/];
                 }
                 app.use('/api/trpc', trpcExpress.createExpressMiddleware({
                     router: trpc_1.appRouter,
