@@ -1,23 +1,63 @@
+'use client'
+
 import { usePathname } from "next/navigation"
 import MaxWidthWrapper from "./MaxWidthWrapper"
+import Image from "next/image"
+import Link from "next/link"
 
 const Footer = () => {
 
   const pathname = usePathname()
   const pathsToMinimize = ["/verify-email", "/sign-up", "/sign-in"]
 
-  return <footer className = "bg-white flex-grow-0">
-    <MaxWidthWrapper>
-      <div className = 'border-t border-gray-200'>
-        {pathsToMinimize.includes(pathname) ? null : (
-          <div>
-            
-          </div>
+  return (
+    <footer className="bg-white flex-grow-0">
+      <MaxWidthWrapper>
+        <div className="border-t border-gray-200">
+          {pathsToMinimize.includes(pathname) ? null : (
+            <div className="flex justify-center">
+              <div className="pb-8 pt-12 flex justify-center items-center">
+                <Image
+                  src="/web-icons/fox_head_01.png"
+                  alt="fox head"
+                  height={150}
+                  width={150}
+                  className="w-auto h-16"
+                />
+                <h1 className = 'text-3xl font-semibold'>
+                  Fox Market Inc.
+                </h1>
+              </div>
+            </div>
+          )}
 
-        )}
-      </div>
-    </MaxWidthWrapper>
-  </footer>
+          {pathsToMinimize.includes(pathname) ? null : (
+            <div>
+              <div className="relative flex items-center px-6 py-6 sm:py-8 lg:mt-0">
+                <div className="absolute inset-0 overflow-hidden rounded-lg">
+                  <div
+                    aria-hidden="true"
+                    className="absolute bg-zinc-50 inset-0 bg-gradient-to-br bg-opacity-90"
+                  ></div>
+                </div>
+
+                <div className="text-center relative mx-auto max-w-sm">
+                  <h3 className="font-semibold text-gray-900">
+                    Become a seller
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    If you&apos;d like to sell high-quality digital products,
+                    you can do so in minutes.{' '}
+                    <Link href = '/sign-in?as=seller' className = 'whitespace-nowrap font-medium text-black hover:text-underline'>Get started</Link>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </MaxWidthWrapper>
+    </footer>
+  );
 }
 
 export default Footer
