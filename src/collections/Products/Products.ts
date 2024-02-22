@@ -4,7 +4,7 @@ import { Product } from "../../payload-types";
 import { stripe } from "../../lib/stripe";
 import { AfterChangeHook } from "payload/dist/collections/config/types";
 import { User } from "payload/dist/auth";
-import { PRODUCT_CATEGORIES } from "@/config";
+import { PRODUCT_CATEGORIES } from "../../config";
 
 const addUser: BeforeChangeHook<Product> = async ({req, data}) => {
   const user = req.user
