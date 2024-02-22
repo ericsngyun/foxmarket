@@ -29,7 +29,7 @@ const NavBar = async () => {
                 <Link href="/">
                   {/* <Icons.logo className = 'h-10 w-10' /> */}
                   <Image
-                    src="/fox_head_01.png"
+                    src="/web-icons/fox_head_01.png"
                     alt="FoxMarket Logo"
                     height={100}
                     width={100}
