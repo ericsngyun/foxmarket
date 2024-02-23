@@ -23,7 +23,7 @@ const NavBar = async () => {
     <div className="bg-background sticky z-50 top-0 inset-x-0 h-16">
       <header className="relative bg-background">
         <MaxWidthWrapper>
-          <div className="border-b border-gray-200">
+          <div className="border-b light:border-gray-200">
             <div className="flex h-16 items-center">
               {/* TODO: MOBILE NAV */}
 
@@ -87,7 +87,7 @@ const NavBar = async () => {
                     </div>
                   )}
 
-                  {/* <ModeToggle/> */}
+                  <ModeToggle/>
 
                   <div className="ml-4 flow-root lg:ml-6">
                     <Cart />

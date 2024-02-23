@@ -44,7 +44,7 @@ const NavItem = ({isAnyOpen, category, handleOpen, isOpen}: NavItemProps) => {
           className={cn(
             "absolute inset-x-0 top-full text-sm text-muted-foreground",
             {
-              "animate-in fade-in-10 slide-in-from-top-5": !isOpen,
+              "animate-in fade-in-50 slide-in-from-top-5": !isOpen,
             }
           )}
         >
@@ -54,7 +54,7 @@ const NavItem = ({isAnyOpen, category, handleOpen, isOpen}: NavItemProps) => {
             aria-hidden="true"
           />
 
-          <div className="relative bg-white">
+          <div className="relative bg-background dark:border-slate-500 light:border-slate-300">
             <div className="mx-auto max-w-7xl px-8">
               <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-10">
                 {/* Render the featured items */}
@@ -77,7 +77,7 @@ const NavItem = ({isAnyOpen, category, handleOpen, isOpen}: NavItemProps) => {
                       {/* Link to the item */}
                       <Link
                         href={item.href}
-                        className="mt-6 block font-medium text-gray-900 hover:underline"
+                        className="mt-6 block font-medium light:text-gray-900 hover:underline"
                       >
                         {item.name}
                       </Link>

@@ -32,7 +32,7 @@ export default function Home() {
     <>
       <MaxWidthWrapper>
         <div className = 'py-20 mx-auto text-center flex flex-col items-center max-w-3xl'>
-          <h1 className = "text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <h1 className = "text-4xl font-bold tracking-tight text-bg sm:text-6xl">
             Your marketplace for high-quality{' '}
             <span className = 'text-orange-500'>digital assets</span>
           </h1>
@@ -48,10 +48,10 @@ export default function Home() {
           </div>
         </div>
         <ProductReel query = {{sort: "desc", limit: 4,}} title = 'Brand New' href = '/products'/>
-        {/* TODO: List Products! */}
+
       </MaxWidthWrapper>
 
-      <section className = 'border-t border-gray-200 bg-gray-50'>
+      <section className = 'border-t light:border-gray-200 '>
         <MaxWidthWrapper className = 'py-20'>
           <div className = 'grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0'>
             {perks.map((perk) => (
@@ -65,7 +65,7 @@ export default function Home() {
                   </div>
 
                   <div className = 'mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6'>
-                    <h3 className = 'text-base font-medium text-gray-900'>
+                    <h3 className = 'text-base font-medium text-bg'>
                       {perk.name}
                     </h3>
                     <p className = 'mt-3 text-sm text-muted-foreground'>

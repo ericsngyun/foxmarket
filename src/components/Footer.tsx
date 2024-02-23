@@ -11,12 +11,12 @@ const Footer = () => {
   const pathsToMinimize = ["/verify-email", "/sign-up", "/sign-in"]
 
   return (
-    <footer className="bg-white flex-grow-0">
+    <footer className=" flex-grow-0">
       <MaxWidthWrapper>
-        <div className="border-t border-gray-200">
+        <div className="border-t light:border-gray-200">
           {pathsToMinimize.includes(pathname) ? null : (
             <div className="flex justify-center">
-              <div className="pb-8 pt-12 flex justify-center items-center">
+              <div className="pb-4 pt-8 flex justify-center items-center">
                 <Image
                   src="/web-icons/fox_head_01.png"
                   alt="fox head"
@@ -25,7 +25,7 @@ const Footer = () => {
                   className="w-auto h-16"
                 />
                 <h1 className = 'text-xl font-semibold'>
-                  Fox Market Inc.
+                  Fox Market 
                 </h1>
               </div>
             </div>
@@ -37,18 +37,18 @@ const Footer = () => {
                 <div className="absolute inset-0 overflow-hidden rounded-lg">
                   <div
                     aria-hidden="true"
-                    className="absolute bg-zinc-50 inset-0 bg-gradient-to-br bg-opacity-90"
+                    className="absolute inset-0 bg-gradient-to-br bg-opacity-90"
                   ></div>
                 </div>
 
                 <div className="text-center relative mx-auto max-w-sm">
-                  <h3 className="font-semibold text-gray-900">
+                  <h3 className="font-semibold">
                     Become a seller
                   </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-sm light:text-muted-foreground">
                     If you&apos;d like to sell high-quality digital products,
                     you can do so in minutes.{' '}
-                    <Link href = '/sign-in?as=seller' className = 'whitespace-nowrap font-medium text-black hover:underline underline-offset-2'>Get started</Link>
+                    <Link href = '/sign-in?as=seller' className = 'whitespace-nowrap font-medium dark:text-slate-50 hover:underline underline-offset-2'>Get started</Link>
                   </p>
                 </div>
               </div>

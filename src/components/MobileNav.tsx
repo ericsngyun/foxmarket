@@ -46,17 +46,17 @@ import { useEffect, useState } from "react"
     return (
       <div>
         <div className="relative z-40 lg:hidden">
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-opacity-25 dark:" />
         </div>
 
         <div className="fixed overflow-y-scroll overscroll-y-none inset-0 z-40 flex">
           <div className="w-4/5">
-            <div className="relative flex w-full max-w-sm flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+            <div className="relative flex w-full max-w-sm flex-col overflow-y-auto bg-background pb-12 shadow-xl">
               <div className="flex px-4 pb-2 pt-5">
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                  className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 light:text-gray-400"
                 >
                   <X className="h-6 w-6" aria-hidden="true" />
                 </button>
@@ -67,11 +67,11 @@ import { useEffect, useState } from "react"
                   {PRODUCT_CATEGORIES.map((category) => (
                     <li
                       key={category.label}
-                      className="space-y-10 px-4 pb-8 pt-10"
+                      className="space-y-5 px-4 pb-8 pt-10"
                     >
                       <div className="border-b border-gray-200">
                         <div className="-mb-px flex">
-                          <p className="border-transparent text-gray-900 flex-1 whitespace-nowrap border-b-2 py-4 text-base font-medium ">
+                          <p className="border-transparent light:text-gray-900 flex-1 whitespace-nowrap border-b-2 py-4 text-base font-medium ">
                             {category.label}
                           </p>
                         </div>
@@ -83,7 +83,7 @@ import { useEffect, useState } from "react"
                             key={item.name}
                             className="group relative text-sm"
                           >
-                            <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                            <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75 group-hover:cursor-pointer">
                               <Image
                                 fill
                                 src={item.imageSrc}
@@ -93,7 +93,7 @@ import { useEffect, useState } from "react"
                             </div>
                             <Link
                               href={item.href}
-                              className="mt-6 block font-medium text-gray-900"
+                              className="mt-4 block font-medium light:text-gray-900 hover:undeline underline-offset-2"
                             >
                               {item.name}
                             </Link>
@@ -110,7 +110,7 @@ import { useEffect, useState } from "react"
                   <Link
                     onClick={() => closeOnCurrent("/sign-up")}
                     href="/sign-up"
-                    className="-m-2 block p-2 font-medium text-gray-900"
+                    className="-m-2 block p-2 font-medium light:text-gray-900"
                   >
                     Sign up
                   </Link>
