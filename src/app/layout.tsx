@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { cn } from '@/lib/utils'
+import { cn, constructMetadata } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
 import NavBar from '@/components/NavBar'
 import Providers from '@/components/Providers'
@@ -10,10 +10,12 @@ import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'Fox Market',
-  description: 'Your marketplace for high-quality digital assets',
-}
+export const metadata = constructMetadata()
+
+// export const metadata: Metadata = {
+//   title: 'Fox Market',
+//   description: 'Your marketplace for high-quality digital assets',
+// }
 
 export default function RootLayout({
   children,
@@ -24,10 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <ThemeProvider 
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="light"
         enableSystem
-        disableTransitionOnChange
-      >
+        >
           <body className={cn("relative h-full font-sans antialiased", inter.className)}>
             <main className = 'relative flex flex-col min-h-screen'>
               <Providers>

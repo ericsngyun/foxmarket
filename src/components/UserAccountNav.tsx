@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { User } from "@/payload-types";
 import Link from "next/link";
 import { useAuth } from "@/hooks/use-auth";
+import { ModeToggle } from "./ModeToggle";
 
 
 
