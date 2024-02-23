@@ -56,7 +56,7 @@ export function constructMetadata({
       title,
       description,
       images: [image],
-      creator: '@ericyun',
+      creator: '@jozudev',
     },
     icons,
     metadataBase: new URL('https://foxmarket.up.railway.app'),
